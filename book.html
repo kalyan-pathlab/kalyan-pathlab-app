@@ -1,6 +1,17 @@
-<!doctype html><html lang="mr"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#087f5b"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css">
-<title>बुकिंग | Kalyan Pathlab</title></head><body><main id="app"></main>
-<nav class="bottom-nav"><a href="index.html">⌂<span>होम</span></a><a href="tests.html">🧪<span>टेस्ट</span></a><a href="book.html" class="active">📅<span>बुकिंग</span></a><a href="reports.html">📄<span>रिपोर्ट</span></a><a href="profile.html">👤<span>प्रोफाइल</span></a></nav>
-<script src="app.js"></script><script>renderBook()</script></body></html>
+<!doctype html><html lang="mr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0757a5"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css"><title>Book Test | Kalyan Pathlab</title></head>
+<body><div class="app-shell"><header class="topbar"><a class="back" href="index.html">‹</a><a class="brand compact" href="index.html"><img src="assets/kalyan-pathlab-logo.png" alt="Kalyan Pathlab"></a><a class="icon-btn" href="tel:9870020674">☎</a></header>
+<main><section class="page-title"><span class="eyebrow">HOME SAMPLE COLLECTION</span><h1>Booking request</h1><p>खालील माहिती भरल्यानंतर WhatsApp वर professional booking message तयार होईल.</p></section>
+<div class="booking-progress"><span class="done">1</span><i></i><span>2</span><i></i><span>3</span></div>
+<form id="booking" class="form-card">
+<label>Patient Name <em>*</em><input name="name" required placeholder="पूर्ण नाव"></label>
+<label>Mobile Number <em>*</em><input name="phone" required inputmode="tel" pattern="[0-9]{10}" maxlength="10" placeholder="10 digit mobile number"></label>
+<label>Test / Health Package <em>*</em><select name="test" id="testSelect" required></select></label>
+<label>Preferred Date <em>*</em><input name="date" type="date" required></label>
+<label>Preferred Time <select name="time"><option>Morning (6 AM – 10 AM)</option><option>Late Morning (10 AM – 1 PM)</option><option>Afternoon (1 PM – 5 PM)</option><option>Evening (5 PM – 8 PM)</option></select></label>
+<label>Home Collection Address <em>*</em><textarea name="address" required rows="3" placeholder="Building, flat/shop, area, landmark, pincode"></textarea></label>
+<label>Special Note <textarea name="note" rows="2" placeholder="Fasting, doctor reference, package inquiry इ."></textarea></label>
+<label class="check"><input type="checkbox" name="consent" required><span>माझी booking enquiry Kalyan Pathlab कडे WhatsApp द्वारे पाठवण्यास मी सहमत आहे.</span></label>
+<button class="submit" type="submit">✓ WhatsApp वर Booking पाठवा</button>
+<p class="form-foot">Booking request गेल्यानंतर team कडून availability, price आणि collection details confirm केले जातील.</p>
+</form></main>
+<nav class="bottom-nav"><a href="index.html">⌂<small>Home</small></a><a href="tests.html">🧪<small>Tests</small></a><a class="book-tab active" href="book.html">＋<small>Book</small></a><a href="reports.html">📄<small>Reports</small></a><a href="profile.html">👤<small>Profile</small></a></nav></div><script src="app.js"></script></body></html>

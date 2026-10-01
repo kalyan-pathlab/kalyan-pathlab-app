@@ -1,28 +1,21 @@
-# Kalyan Pathlab – New Patient PWA
+# Kalyan Pathlab Professional PWA V3
+
+Professional mobile-first redesign based on the supplied Kalyan Pathlab artwork.
 
 ## Included
-- Mobile-first home page
-- Test search and booking
-- Home sample collection booking form
-- WhatsApp booking handoff
-- Booking/report status screen
-- Patient profile
+- Refined blue/red Kalyan Pathlab visual system
+- Supplied logo artwork reused as app branding
+- Supplied Heart Health and Liver Health visuals
+- Home, Tests, Booking, Reports and Profile screens
+- Responsive mobile/desktop layout
 - PWA manifest + service worker
-- Offline shell/cache
-- Marathi-first UI with simple English medical terms
+- Searchable test list
+- Booking URL can preselect a test
+- Professional WhatsApp booking message to 9870020674
+- Local profile convenience storage only
 
 ## Important
-This is a front-end starter. The current live site sends booking details to WhatsApp. For a production app, connect the booking/profile/report data to a secure backend such as Google Apps Script + Google Sheets, Firebase, Supabase, or another authenticated database.
+The displayed test prices are placeholders and must be replaced with your actual current rate card. This is a front-end PWA. Do not put patient medical records, report PDFs, passwords or API keys in a public GitHub repository. A production medical app should use a secure backend, authentication/OTP and controlled report access.
 
-## Deploy
-Upload all files to the same GitHub Pages folder. Set the GitHub Pages URL as the start URL if the folder path changes.
-
-## Production TODO
-1. Real test master database (MRP, B2C price, fasting requirement, TAT, home collection charge).
-2. Admin dashboard.
-3. Booking ID generation and status workflow.
-4. Secure patient authentication/OTP.
-5. Report PDF upload and private report links.
-6. Payment gateway/UPI verification.
-7. Consent/privacy policy and data retention controls.
-8. Push notifications.
+## GitHub Pages
+Upload all files to the repository root, including the `assets` folder. `index.html` must be in the root.

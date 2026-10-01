@@ -1,16 +1,51 @@
-const tests=[["CBC","Complete Blood Count",450,180],["HbA1c","Diabetes 3-month test",550,220],["FBS","Fasting Blood Sugar",120,50],["PPBS","Post Meal Blood Sugar",120,50],["Lipid Profile","Cholesterol profile",700,300],["TSH","Thyroid test",400,160],["Vitamin B12","Vitamin B12",900,450],["Vitamin D","Vitamin D3",1200,550],["LFT","Liver Function Test",850,380],["KFT","Kidney Function Test",850,380],["Urine Routine","Urine routine examination",250,100],["Full Body Checkup","Health Checkup Package",3200,1400]];
-const A="https://swapnilmokal.github.io/kalyan-pathlab/book/index.html", WA="https://wa.me/919870020674";
-const rupee=n=>`₹${Number(n).toLocaleString("en-IN")}`;
-function shell(title,body){document.getElementById("app").innerHTML=`<div class="top"><div class="brand"><div class="logo">🩸</div><div><h1>Kalyan Pathlab</h1><p>संस्कार फाउंडेशन संचलित · Care For Quality</p></div></div>${title?`<div class="hero"><h2>${title}</h2></div>`:""}</div>${body}<div id="toast" class="toast"></div>`}
-function toast(x){let t=document.getElementById("toast");t.textContent=x;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600)}
-function renderHome(){shell("",`<section class="hero"><span class="discount">30% ते 70% सवलत</span><h2>घरबसल्या रक्त तपासणी बुक करा</h2><p>Free Home Sample Collection · सोपी ऑनलाइन बुकिंग · रिपोर्ट ऑनलाइन</p><a class="btn primary full" href="book.html">📅 टेस्ट बुक करा</a></section>
-<div class="grid"><a class="tile" href="tests.html"><span>🧪</span>टेस्ट व रेट</a><a class="tile" href="book.html"><span>🏠</span>Home Collection</a><a class="tile" href="reports.html"><span>📄</span>रिपोर्ट/स्थिती</a><a class="tile" href="profile.html"><span>👤</span>माझे प्रोफाइल</a></div>
-<div class="card"><h3>⭐ आजच का बुक करावे?</h3><div class="steps"><div class="step"><b>1. टेस्ट निवडा</b><small>तुमच्या गरजेची टेस्ट शोधा</small></div><div class="step"><b>2. स्लॉट निवडा</b><small>घरातून sample collection</small></div><div class="step"><b>3. रिपोर्ट मिळवा</b><small>WhatsApp / Email</small></div></div></div>
-<div class="notice">📞 टेस्ट यादीत टेस्ट सापडली नाही? आम्हाला WhatsApp वर विचारा.</div>
-<div class="card"><h3>📍 Kalyan Pathlab</h3><p class="muted">Shop No. 3, 1st Floor, Parvati Apartment, Tisgaon Naka, Kalyan East – 421306</p><a class="btn secondary" href="tel:+919870020674">☎ 98700 20674</a> <a class="btn primary" href="${WA}" target="_blank">WhatsApp</a></div>`)}
-function renderTests(){shell("टेस्ट व किंमत यादी",`<div class="search"><input id="q" placeholder="🔎 CBC, Thyroid, Sugar, Vitamin..."></div><div id="list"></div>`);function draw(){let q=document.getElementById("q").value.toLowerCase();document.getElementById("list").innerHTML=tests.filter(t=>t.join(" ").toLowerCase().includes(q)).map(t=>`<div class="card test"><div><span class="tag">SAVE</span><h3>${t[0]}</h3><p class="muted">${t[1]}</p><span class="old">${rupee(t[2])}</span> <span class="price">${rupee(Math.round(t[2]*.5))}</span><div class="save">सवलत उपलब्ध • Home Collection</div></div><a class="btn primary" href="book.html?test=${encodeURIComponent(t[0])}">बुक</a></div>`).join("")||`<div class="card"><h3>टेस्ट सापडली नाही</h3><p>WhatsApp वर टेस्टचे नाव पाठवा.</p><a class="btn primary" href="${WA}" target="_blank">WhatsApp करा</a></div>`}document.getElementById("q").oninput=draw;draw()}
-function renderBook(){let selected=new URLSearchParams(location.search).get("test")||"";shell("घरबसल्या टेस्ट बुक करा",`<form id="form" class="card"><label>नाव *</label><input name="name" required placeholder="पूर्ण नाव"><div class="row"><div><label>मोबाईल *</label><input name="phone" required inputmode="numeric" pattern="[0-9]{10}" placeholder="10 अंकी नंबर"></div><div><label>शहर *</label><input name="city" required value="Kalyan"></div></div><label>टेस्ट / पॅकेज *</label><input name="test" required value="${selected}" placeholder="उदा. CBC, HbA1c, Full Body Checkup"><label>पत्ता *</label><textarea name="address" required placeholder="संपूर्ण पत्ता"></textarea><div class="row"><div><label>Collection Date *</label><input type="date" name="date" required></div><div><label>Preferred Time *</label><input type="time" name="time" required></div></div><label>Report कसा हवा?</label><select name="report"><option>WhatsApp</option><option>Email</option><option>Hard Copy</option></select><label>Email (ऐच्छिक)</label><input type="email" name="email" placeholder="you@example.com"><label>Doctor / Reference</label><input name="doctor" placeholder="डॉक्टरचे नाव किंवा स्वतः"><label>Prescription (ऐच्छिक)</label><input type="file" name="rx" accept="image/*,.pdf"><label><input type="checkbox" required> वरील माहिती बरोबर आहे आणि sample collection साठी संपर्क करण्यास मी संमती देतो.</label><button class="btn primary full" type="submit">✅ Booking Confirm करा</button></form><div class="notice">बुकिंगनंतर WhatsApp संदेश तयार होईल. अंतिम booking confirmation टीमकडून दिली जाईल.</div>`);document.getElementById("form").onsubmit=e=>{e.preventDefault();let f=new FormData(e.target),msg=`Kalyan Pathlab Booking%0Aनाव: ${f.get("name")}%0Aमोबाईल: ${f.get("phone")}%0Aटेस्ट: ${f.get("test")}%0Aपत्ता: ${f.get("address")}%0Aशहर: ${f.get("city")}%0Aदिनांक: ${f.get("date")}%0Aवेळ: ${f.get("time")}%0AReport: ${f.get("report")}%0ADoctor/Reference: ${f.get("doctor")||"स्वतः"}`;localStorage.setItem("lastBooking",JSON.stringify(Object.fromEntries(f)));location.href=`${WA}?text=${msg}`}}
-function renderReports(){shell("माझी बुकिंग / रिपोर्ट",`<div class="card"><label>बुकिंगवेळी दिलेला मोबाईल नंबर</label><input id="phone" inputmode="numeric" placeholder="10 अंकी मोबाईल नंबर"><button class="btn primary full" style="margin-top:10px" onclick="checkStatus()">स्थिती तपासा</button></div><div id="status"></div><div class="notice">रिपोर्ट उपलब्ध झाल्यावर WhatsApp/Email वर मिळालेल्या लिंकवरून PDF उघडा.</div>`)}
-function checkStatus(){let p=document.getElementById("phone").value.trim(),b=JSON.parse(localStorage.getItem("lastBooking")||"null");document.getElementById("status").innerHTML=b&&b.phone===p?`<div class="card"><span class="tag">BOOKING RECEIVED</span><h3>${b.test}</h3><p>नाव: ${b.name}</p><p>Collection: ${b.date} · ${b.time}</p><a class="btn primary" href="${WA}" target="_blank">WhatsApp वर चौकशी</a></div>`:`<div class="card"><h3>रेकॉर्ड सापडला नाही</h3><p class="muted">मोबाईल नंबर तपासा किंवा WhatsApp वर संपर्क करा.</p></div>`}
-function renderProfile(){let p=JSON.parse(localStorage.getItem("profile")||"{}");shell("माझे प्रोफाइल",`<form id="profile" class="card"><label>पूर्ण नाव</label><input name="name" value="${p.name||""}" required><label>मोबाईल नंबर</label><input name="phone" value="${p.phone||""}" inputmode="numeric" pattern="[0-9]{10}" required><label>जन्मतारीख</label><input name="dob" type="date" value="${p.dob||""}"><label>पत्ता</label><textarea name="address">${p.address||""}</textarea><button class="btn primary full">💾 प्रोफाइल सेव्ह करा</button></form><div class="card"><h3>🔐 Privacy</h3><p class="muted">या demo आवृत्तीत profile माहिती तुमच्या device च्या local storage मध्ये साठवली जाते. Production मध्ये सुरक्षित backend/database वापरा.</p></div>`);document.getElementById("profile").onsubmit=e=>{e.preventDefault();localStorage.setItem("profile",JSON.stringify(Object.fromEntries(new FormData(e.target))));toast("प्रोफाइल सेव्ह झाले ✓")}}
-if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+const TESTS=[
+{name:"Complete Blood Count (CBC)",icon:"🩸",mrp:"₹500",price:"₹250"},
+{name:"HbA1c",icon:"🩺",mrp:"₹600",price:"₹300"},
+{name:"Fasting Blood Sugar (FBS)",icon:"🧪",mrp:"₹150",price:"₹75"},
+{name:"Post Prandial Blood Sugar (PPBS)",icon:"🍬",mrp:"₹180",price:"₹90"},
+{name:"Lipid Profile",icon:"❤️",mrp:"₹800",price:"₹400"},
+{name:"Liver Function Test (LFT)",icon:"🫀",mrp:"₹900",price:"₹450"},
+{name:"Kidney Function Test (KFT)",icon:"🫘",mrp:"₹900",price:"₹450"},
+{name:"Thyroid Profile",icon:"🦋",mrp:"₹700",price:"₹350"},
+{name:"Vitamin B12",icon:"💊",mrp:"₹900",price:"₹450"},
+{name:"Vitamin D",icon:"☀️",mrp:"₹1200",price:"₹600"}
+];
+
+function renderTests(){
+ const box=document.getElementById("test-list"); if(!box)return;
+ const q=(document.getElementById("search")?.value||"").toLowerCase();
+ box.innerHTML=TESTS.filter(t=>t.name.toLowerCase().includes(q)).map(t=>`
+ <article class="test-card"><div class="test-icon">${t.icon}</div><div class="test-main"><b>${t.name}</b><small><s>${t.mrp}</s> &nbsp; <span class="price">${t.price}</span></small></div><a class="book-mini" href="book.html?test=${encodeURIComponent(t.name)}">Book</a></article>`).join("")||'<div class="notice">Test सापडली नाही. WhatsApp वर test चे नाव पाठवा.</div>';
+}
+function populateBooking(){
+ const s=document.getElementById("testSelect"); if(!s)return;
+ s.innerHTML=TESTS.map(t=>`<option value="${t.name}">${t.name}</option>`).join("");
+ const q=new URLSearchParams(location.search).get("test"); if(q)s.value=q;
+ const d=document.querySelector('input[name="date"]'); if(d){const now=new Date();d.min=new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().slice(0,10);}
+}
+const booking=document.getElementById("booking");
+if(booking)booking.addEventListener("submit",e=>{
+ e.preventDefault();
+ const d=Object.fromEntries(new FormData(booking).entries());
+ const message=`🧪 *KALYAN PATHLAB – HOME SAMPLE COLLECTION BOOKING*%0A%0A`+
+ `Namaskar Kalyan Pathlab Team,%0A%0A`+
+ `Mala blood test / health checkup booking karaychi aahe.%0A%0A`+
+ `👤 *Patient:* ${encodeURIComponent(d.name)}%0A`+
+ `📱 *Mobile:* ${encodeURIComponent(d.phone)}%0A`+
+ `🧪 *Test / Package:* ${encodeURIComponent(d.test)}%0A`+
+ `📅 *Preferred Date:* ${encodeURIComponent(d.date)}%0A`+
+ `⏰ *Preferred Time:* ${encodeURIComponent(d.time)}%0A`+
+ `🏠 *Home Collection Address:* ${encodeURIComponent(d.address)}%0A`+
+ `📝 *Special Note:* ${encodeURIComponent(d.note||"None")}%0A%0A`+
+ `कृपया availability, final price/discount आणि home sample collection confirmation कळवा.%0A%0A`+
+ `Thank you.%0A*Kalyan Pathlab – Accurate Reports | Better Health*`;
+ location.href=`https://wa.me/919870020674?text=${message}`;
+});
+const pf=document.getElementById("profile-form");
+if(pf){
+ const saved=JSON.parse(localStorage.getItem("kpProfile")||"{}");
+ ["name","phone","city"].forEach(k=>{const el=document.getElementById("p"+k);if(el)el.value=saved[k]||""});
+ pf.addEventListener("submit",e=>{e.preventDefault();localStorage.setItem("kpProfile",JSON.stringify(Object.fromEntries(new FormData(pf).entries())));alert("Profile saved.");});
+}
+renderTests();populateBooking();
+if("serviceWorker"in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{});
